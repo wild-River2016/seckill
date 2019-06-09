@@ -1,6 +1,8 @@
 package com.lsh.controller;
 
 import com.lsh.domain.User;
+import com.lsh.redis.RedisService;
+import com.lsh.redis.UserKey;
 import com.lsh.result.CodeMsg;
 import com.lsh.result.Result;
 import com.lsh.service.UserService;
@@ -18,6 +20,8 @@ public class SampleController {
 
 	@Autowired
     UserService userService;
+	@Autowired
+    RedisService redisService;
 	
 
 	
@@ -30,7 +34,8 @@ public class SampleController {
     @RequestMapping("/error")
     @ResponseBody
     public Result<String> error() {
-        return Result.error(CodeMsg.SESSION_ERROR);
+//        return Result.error(CodeMsg.SESSION_ERROR);
+        return null;
     }
     
     @RequestMapping("/hello/themaleaf")

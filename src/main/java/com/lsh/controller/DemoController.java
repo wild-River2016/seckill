@@ -13,19 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/demo")
 public class DemoController {
 	
-	 	@RequestMapping("/")
-	    @ResponseBody
-	    String home() {
-	        return "Hello World!";
-	    }
-	 	//1.rest api json输出 2.页面
-	 	@RequestMapping("/hello")
-	    @ResponseBody
-	    public Result<String> hello() {
-	 		return Result.success("hello,imooc");
-	       // return new Result(0, "success", "hello,imooc");
-	    }
-	 	
+
 	 	@RequestMapping("/helloError")
 	    @ResponseBody
 	    public Result<String> helloError() {
