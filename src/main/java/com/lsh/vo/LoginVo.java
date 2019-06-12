@@ -2,6 +2,7 @@ package com.lsh.vo;
 
 import javax.validation.constraints.NotNull;
 
+import com.lsh.validator.IsMobile;
 import org.hibernate.validator.constraints.Length;
 
 

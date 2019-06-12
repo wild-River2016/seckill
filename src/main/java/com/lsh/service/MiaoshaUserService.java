@@ -5,9 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lsh.dao.MiaoshaUserDao;
 import com.lsh.domain.MiaoshaUser;
+import com.lsh.exception.GlobalException;
+import com.lsh.redis.MiaoshaUserKey;
 import com.lsh.redis.RedisService;
 import com.lsh.result.CodeMsg;
 import com.lsh.util.MD5Util;
+import com.lsh.util.UUIDUtil;
+import com.lsh.vo.LoginVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

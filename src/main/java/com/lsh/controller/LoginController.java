@@ -5,6 +5,8 @@ import javax.validation.Valid;
 
 import com.lsh.redis.RedisService;
 import com.lsh.result.Result;
+import com.lsh.service.MiaoshaUserService;
+import com.lsh.vo.LoginVo;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 public class LoginController {
 
+    @Autowired
+    MiaoshaUserService userService;
 
 	@Autowired
     RedisService redisService;
@@ -34,12 +38,12 @@ public class LoginController {
 
     }
     
-//    @RequestMapping("/do_login")
-//    @ResponseBody
-//    public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
-//        log.info(loginVo.toString());
-//        //登录
-//        userService.login(response, loginVo);
-//        return Result.success(true);
-//    }
+    @RequestMapping("/do_login")
+    @ResponseBody
+    public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
+        log.info(loginVo.toString());
+        //登录
+        userService.login(response, loginVo);
+        return Result.success(true);
+    }
 }
