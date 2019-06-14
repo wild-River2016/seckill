@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @ClassName UserArgumentResolver
- * @Description: TODO
+ * @Description: user对象参数解析器
  * @Author lsh
  * @Date 2019/6/12 21:42
  * @Version
@@ -28,18 +28,34 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Autowired
     MiaoshaUserService userService;
 
+    /**
+     * 判断是否启用分解功能
+     * @param methodParameter
+     * @return
+     */
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
         Class<?> clazz = methodParameter.getParameterType();
         return clazz == MiaoshaUser.class;
     }
 
+    /**
+     * 解析参数
+     * @param methodParameter
+     * @param modelAndViewContainer
+     * @param nativeWebRequest
+     * @param webDataBinderFactory
+     * @return
+     * @throws Exception
+     */
     @Override
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer,
                                   NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
         HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
         HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
+        //获取token参数
         String paramToken = request.getParameter(MiaoshaUserService.COOKI_NAME_TOKEN);
+        //获取cookie中的token
         String cookieToken = getCookieValue(request, MiaoshaUserService.COOKI_NAME_TOKEN);
         if(StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)) {
             return null;
