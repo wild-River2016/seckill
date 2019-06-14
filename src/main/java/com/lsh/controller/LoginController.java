@@ -24,20 +24,21 @@ public class LoginController {
 
     @Autowired
     MiaoshaUserService userService;
-
-	@Autowired
-    RedisService redisService;
-	
+    /**
+     * 跳转到登录页面
+     * @return
+     */
     @RequestMapping("/to_login")
     public String toLogin() {
         return "login";
     }
 
-    @RequestMapping("")
-    public void doLogin() {
-
-    }
-    
+    /**
+     * 登录操作
+     * @param response
+     * @param loginVo
+     * @return
+     */
     @RequestMapping("/do_login")
     @ResponseBody
     public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
