@@ -23,16 +23,12 @@ public class MiaoshaController {
 
 	@Autowired
 	MiaoshaUserService userService;
-	
 	@Autowired
 	RedisService redisService;
-	
 	@Autowired
 	GoodsService goodsService;
-	
 	@Autowired
 	OrderService orderService;
-	
 	@Autowired
 	MiaoshaService miaoshaService;
 	
