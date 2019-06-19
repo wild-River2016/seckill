@@ -1,6 +1,7 @@
 package com.lsh.controller;
 
 import com.lsh.domain.User;
+import com.lsh.rabbitmq.MQSender;
 import com.lsh.redis.RedisService;
 import com.lsh.redis.UserKey;
 import com.lsh.result.CodeMsg;
@@ -22,7 +23,15 @@ public class SampleController {
     UserService userService;
 	@Autowired
     RedisService redisService;
+	@Autowired
+    MQSender sender;
 	
+    @RequestMapping("/mq")
+    @ResponseBody
+	public Result<String> mq() {
+        sender.send("hello,imooc");
+        return Result.success("hello");
+    }
 
 	
     @RequestMapping("/hello")
